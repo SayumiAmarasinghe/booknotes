@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New User</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/new.css">
+</head>
+
+<body>
+    <div class="books">
+        <h2>My Favorite Books</h2>
+        <form action = "/add" method = "post">
+            <input type = "text" name = "title" placeholder = "Title" required>
+            <input type = "text" name = "author" placeholder = "Author" required>
+            <input type = "text" name = "isbn" placeholder = "isbn" required>
+            <input type = "text" name = "content" placeholder = "content" required>
+            <input type = "text" name = "rating" placeholder = "placeholder" required>
+            <button type = "submit">Add</button>   
+        </form>
+        <% books.forEach(function(book) { %>
+            <ul id = "book-list">
+            <li>
+                <h3><%= book.title %></h3>
+                <p><strong>Author:</strong> <%= book.author %></p>
+                <p><strong>ISBN:</strong> <%= book.isbn %> </p>
+                <p><strong>Review:</strong> <%= book.content%></p>
+                <img 
+                    src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg?default=false" 
+                    alt="Cover for <%= book.title %>" 
+                    style="width:150px;"/>
+                <h4><strong>Rating: </strong>><%= book.rating %></h4>
+                    
+                <form action = "/edit/<%= book.id%>" method = "post">
+                <input type = "text" name = "title" value="<%= book.title %>">
+                <input type = "text" name = "author" value = "<%= book.author %>">
+                <input type = "text" name = "isbn" value = "<%= book.isbn %>">
+                <input type = "text" name = "content" value = "<%= book.content%>">
+                <input type = "text" name = "rating" value = "<%= book.rating%>">
+                <button type = "submit">Submit Changes</button>
+                </form>
+            
+                <form action = "/delete/<%= book.id %>" method = "post">
+                    <button type = "submit" class="delete">Delete</button>
+                </form>
+                </li>
+                <% }) %>
+        </ul>
+
+
+        </div>
+
+</body>
+</html>

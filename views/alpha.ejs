@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New User</title>
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/new.css">
+</head>
+
+<body>
+    <h2 id= "title">My Favorite Books</h2>
+    <h3 id = "sort-header">Sort the book entries by <a href="/rating">rating</a> , <a href="/alpha">alphabetically, </a>or in the <a href = "/">original order</a>.</h3>
+     <a class="button" href = "/add"><button>Add Book</button></a> 
+    <div class="books">
+        <ul id = "book-list">
+            <% books.forEach(function(book) { %>
+                <h3 class = "book-info" id = "title-book"><%= book.title %></h3>
+                <img 
+                    src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg?default=false" 
+                    alt="Cover for <%= book.title %>" 
+                    style="width:150px;"/>
+                <p class = "book-info"><strong>Author:</strong> <%= book.author %></p>
+                <p class = "book-info"><strong>ISBN:</strong> <%= book.isbn %> </p>
+                <p class = "book-info"><strong>Review:</strong> <%= book.content%></p>
+                <h4 class = "book-info"><strong>Rating: </strong><%= book.rating %></h4>
+
+                 <div class="flex-container">
+                    <a class="button" href="/edit/<%= book.id %>"><button>Edit</button></a>
+                
+                    <form action = "/delete/<%= book.id %>" method = "post">
+                        <button type = "submit" class="button">Delete</button>
+                    </form>
+                </div>
+                    
+                
+            <% }); %>
+         
+       
+
+        </ul>
+    </div>
+
+</body>
+</html>
