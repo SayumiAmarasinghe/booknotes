@@ -15,18 +15,22 @@
      <a class="button" href = "/add"><button>Add Book</button></a> 
     <div class="books">
         <ul id = "book-list">
+           <
             <% books.forEach(function(book) { %>
                 <h3 class = "book-info" id = "title-book"><%= book.title %></h3>
-                <img 
-                    src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg?default=false" 
-                    alt="Cover for <%= book.title %>" 
-                    style="width:150px;"/>
-                <p class = "book-info"><strong>Author:</strong> <%= book.author %></p>
-                <p class = "book-info"><strong>ISBN:</strong> <%= book.isbn %> </p>
-                <p class = "book-info"><strong>Review:</strong> <%= book.content%></p>
-                <h4 class = "book-info"><strong>Rating: </strong><%= book.rating %><br></h4>
-
-                 <div class="flex-container">
+                 <div class="book-positioning">
+                    <img 
+                        src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg?default=false" 
+                        alt="Cover for <%= book.title %>" 
+                        style="width:150px;"/>
+                    <div id = "book-center">
+                        <p class = "book-info"><strong>Author:</strong> <%= book.author %></p>
+                        <p class = "book-info"><strong>ISBN:</strong> <%= book.isbn %> </p>
+                        <p class = "book-info"><strong>Review:</strong> <%= book.content%></p>
+                        <h4 class = "book-info"><strong>Rating: </strong><%= book.rating %><br></h4>
+                    </div>
+            </div>
+                <div class="flex-container">
                     <a class="button" href="/edit/<%= book.id %>"><button>Edit</button></a>
                 
                     <form action = "/delete/<%= book.id %>" method = "post">
